@@ -26,8 +26,10 @@ Add this dependency to your project's POM:
 
 Install the following JARs:
 
-* The Stripe JAR from https://github.com/tamber/tamber-java/builds
-* [Google Gson](http://code.google.com/p/google-gson/) from <http://google-gson.googlecode.com/files/google-gson-2.2.4-release.zip>.
+* The Tamber JAR from https://github.com/tamber/tamber-java/builds
+* [JSON Simple](https://code.google.com/p/json-simple/) from <http://json-simple.googlecode.com/files/json-simple-1.1.1.jar>
+* [JSON](http://www.json.org/java/) from <https://code.google.com/p/org-json-java/downloads/list>
+* [Apache HTTP Components](https://hc.apache.org/) from <https://hc.apache.org/downloads.cgi>.
 
 Usage
 =====
@@ -56,7 +58,6 @@ public class StripeExample {
         b1.put("behavior", "like");
         b1.put("item", "HZNP");
         b1.put("value", 1.0);
-        b1.put("created", 1446417346);
         behaviors.add(b1);
         actorParams.put("behaviors", behaviors);
 
