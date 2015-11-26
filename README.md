@@ -5,7 +5,7 @@ You can sign up for a Tamber account at https://tamber.com.
 Requirements
 ============
 
-Java 1.6 and later.
+Java 1.7 and later.
 
 Installation
 ============
@@ -35,13 +35,15 @@ Usage
 Example.java
 
 ```java
+import com.tamber.Tamber;
+import com.tamber.exception.TamberException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.stripe.Stripe;
-import com.stripe.exception.StripeException;
-import com.stripe.model.Charge;
-import com.stripe.net.RequestOptions;
+import org.json.JSONObject;
 
 public class StripeExample {
 
