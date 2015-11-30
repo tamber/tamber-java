@@ -47,7 +47,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
-public class StripeExample {
+public class TamberExample {
 
     public static void main(String[] args) {
         Tamber tamber = new Tamber("H4y13AJ1QMlgzOqZ0sib");
