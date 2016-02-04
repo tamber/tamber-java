@@ -16,11 +16,11 @@ public class BehaviorTest{
     public static boolean create(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
         params.put("name", "share");
-        params.put("type", "decay");
         params.put("desirability",0.3);
-
+        params.put("type", "exponential");
+        
         HashMap<String,Object> typeParams = new HashMap<String,Object>();
-        typeParams.put("step", 2.0);
+        typeParams.put("lambda", 2.0);
 
         params.put("params", typeParams);
 
@@ -51,30 +51,6 @@ public class BehaviorTest{
         JSONObject resp = new JSONObject();
         try{
             resp = tamber.behavior.retrieve(params);
-        } catch(TamberException e) {
-            System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
-            return false;
-        }
-        if(resp!= null){
-            try {
-                System.out.println(resp.toString(4));
-                return true;
-            } catch (JSONException e){
-                System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
-                return false;
-            }
-        } else {
-            System.out.println("resp did not return");
-            return false;
-        }
-    }
-    public static boolean remove(Tamber tamber){
-        HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("name", "share");
-
-        JSONObject resp = new JSONObject();
-        try{
-            resp = tamber.behavior.remove(params);
         } catch(TamberException e) {
             System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
             return false;

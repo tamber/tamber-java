@@ -15,7 +15,7 @@ public class DiscoverTest{
 
     public static boolean recommended(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("id", "2197054086");
+        params.put("user", "user_rlox8k927z7p");
 
         JSONObject resp = new JSONObject();
         try{
@@ -39,7 +39,7 @@ public class DiscoverTest{
     }
     public static boolean similar(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("id", "HZNP");
+        params.put("item", "item_83jx4c57r2ru");
 
         JSONObject resp = new JSONObject();
         try{
@@ -63,8 +63,8 @@ public class DiscoverTest{
     }
     public static boolean recommendedSimilar(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("actor", "2197054086");
-        params.put("item", "HZNP");
+        params.put("user", "user_rlox8k927z7p");
+        params.put("item", "item_83jx4c57r2ru");
 
         JSONObject resp = new JSONObject();
         try{

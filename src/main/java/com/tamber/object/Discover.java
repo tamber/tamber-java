@@ -15,14 +15,6 @@ import org.json.simple.JSONValue;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-// public class DiscoverParams{
-// 		String  actor  
-// 		String item
-// 		int number
-// 		int page
-// 		Map<String,Object> filter
-// }
-
 public class Discover{
 
 	private static final String object = "discover";
@@ -35,7 +27,7 @@ public class Discover{
 	private List<NameValuePair> _getBody(HashMap<String,Object> params) throws TamberException{
 		List<NameValuePair> out = new ArrayList<NameValuePair>();
 		for (String key : params.keySet()) {
-			if (key == "actor" || key == "item"){
+			if (key == "user" || key == "item"){
 				out.add(new BasicNameValuePair(key, (String)params.get(key)));
 			} else if (key=="number" || key=="page"){
 				if(params.get(key).getClass().equals(Integer.class)){
@@ -43,7 +35,7 @@ public class Discover{
 				} else {
 					throw new TamberException(String.format("%s field in Discover params must be an Integer. %s provided.", key, params.get(key).getClass()));
 				}
-			} else if (key=="filter"){
+			} else if (key=="filter" || key =="test_events"){
 				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(params.get(key))));
 			}
 		}

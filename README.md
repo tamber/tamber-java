@@ -51,19 +51,19 @@ public class TamberExample {
 
     public static void main(String[] args) {
         Tamber tamber = new Tamber("H4y13AJ1QMlgzOqZ0sib");
-        HashMap<String,Object> actorParams = new HashMap<String,Object>();
-        actorParams.put("id", "2197054087");
-        List<HashMap<String,Object>> behaviors = new ArrayList<HashMap<String,Object>>();
-        HashMap<String,Object> b1 = new HashMap<String,Object>();
-        b1.put("behavior", "like");
-        b1.put("item", "HZNP");
-        b1.put("value", 1.0);
-        behaviors.add(b1);
-        actorParams.put("behaviors", behaviors);
+
+        //Create Event
+        HashMap<String,Object> eventParams = new HashMap<String,Object>();
+        eventParams.put("user", "user_rlox8k927z7p");
+        eventParams.put("item", "item_wmt4fn6o4zlk");
+        eventParams.put("behavior", "like");
+
+        //Set getRecs to return fresh suggestions for the user
+        eventParams.put("getRecs, new HashMap<String,Object>());
 
         JSONObject resp = new JSONObject();
         try{
-            JSONObject resp = tamber.actor.create(actorParams);
+            JSONObject resp = tamber.event.track(eventParams);
         } catch(TamberException e) {
             e.printStackTrace();
         }

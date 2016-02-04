@@ -2,11 +2,12 @@ package com.tamber;
 
 import com.tamber.Tamber;
 
-import com.tamber.ActorTest;
+import com.tamber.EventTest;
+import com.tamber.DiscoverTest;
+import com.tamber.UserTest;
 import com.tamber.ItemTest;
 import com.tamber.BehaviorTest;
 import com.tamber.PropertyTest;
-import com.tamber.DiscoverTest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +22,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class TamberTest 
     extends TestCase
 {
     /**
@@ -29,7 +30,7 @@ public class AppTest
      *
      * @param testName name of the test case
      */
-    public AppTest( String testName )
+    public TamberTest( String testName )
     {
         super( testName );
     }
@@ -39,7 +40,7 @@ public class AppTest
      */
     public static Test suite()
     {
-        return new TestSuite( AppTest.class );
+        return new TestSuite( TamberTest.class );
     }
 
     private static Tamber tamber;
@@ -47,7 +48,8 @@ public class AppTest
     public void testApp()
     {
         initTamber();
-        runActorTests();
+        runEventTests();
+        runUserTests();
         runPropertyTests();
         runItemTests();
         runBehaviorTests();
@@ -59,26 +61,27 @@ public class AppTest
         tamber = new Tamber("H4y13AJ1QMlgzOqZ0sib");
     }
 
-    public void runActorTests(){
-        assertTrue( ActorTest.create(tamber) );
-        assertTrue( ActorTest.addBehaviors(tamber) );
-        assertTrue( ActorTest.retrieve(tamber) );
-        assertTrue( ActorTest.remove(tamber) );
+    public void runEventTests(){
+        assertTrue( EventTest.track(tamber) );
+        assertTrue( EventTest.retrieve(tamber) );
+        assertTrue( EventTest.batch(tamber) );
+    }
+
+    public void runUserTests(){
+        assertTrue( UserTest.create(tamber) );
+        assertTrue( UserTest.update(tamber) );
+        assertTrue( UserTest.retrieve(tamber) );
     }
 
     public void runPropertyTests(){
         assertTrue( PropertyTest.create(tamber) );
         assertTrue( PropertyTest.retrieve(tamber) );
-        assertTrue( PropertyTest.remove(tamber) );
         assertTrue( PropertyTest.create(tamber) );
     }
 
     public void runItemTests(){
         assertTrue( ItemTest.create(tamber) );
-        assertTrue( ItemTest.addProperties(tamber) );
-        assertTrue( ItemTest.removeProperties(tamber) );
-        assertTrue( ItemTest.addTags(tamber) );
-        assertTrue( ItemTest.removeTags(tamber) );
+        assertTrue( ItemTest.update(tamber) );
         assertTrue( ItemTest.retrieve(tamber) );
         assertTrue( ItemTest.remove(tamber) );
     }
@@ -86,7 +89,6 @@ public class AppTest
     public void runBehaviorTests(){
         assertTrue( BehaviorTest.create(tamber) );
         assertTrue( BehaviorTest.retrieve(tamber) );
-        assertTrue( BehaviorTest.remove(tamber) );
     }
 
     public void runDiscoverTests(){

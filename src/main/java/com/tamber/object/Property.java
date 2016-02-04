@@ -40,8 +40,4 @@ public class Property{
 	public JSONObject retrieve(HashMap<String,Object> params) throws TamberException{
 		return Comms.Post(engine, object, "retrieve", _getBody(params));
 	}
-	public JSONObject remove(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "remove", _getBody(params));
-	}
-
 }

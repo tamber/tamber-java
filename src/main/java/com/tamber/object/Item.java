@@ -29,7 +29,7 @@ public class Item{
 		for (String key : params.keySet()) {
 			if (key == "id"){
 				out.add(new BasicNameValuePair(key, (String)params.get(key)));
-			} else if (key == "properties" || key == "tags"){
+			} else if (key == "updates" || key == "properties" || key == "tags"){
 				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(params.get(key))));
 			} else if (key=="created"){
 				if(params.get(key).getClass().equals(Integer.class)){
@@ -45,17 +45,8 @@ public class Item{
 	public JSONObject create(HashMap<String,Object> params) throws TamberException{
 		return Comms.Post(engine, object, "create", _getBody(params));
 	}
-	public JSONObject addProperties(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "addProperties", _getBody(params));
-	}
-	public JSONObject removeProperties(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "removeProperties", _getBody(params));
-	}
-	public JSONObject addTags(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "addTags", _getBody(params));
-	}
-	public JSONObject removeTags(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "removeTags", _getBody(params));
+	public JSONObject update(HashMap<String,Object> params) throws TamberException{
+		return Comms.Post(engine, object, "update", _getBody(params));
 	}
 	public JSONObject retrieve(HashMap<String,Object> params) throws TamberException{
 		return Comms.Post(engine, object, "retrieve", _getBody(params));

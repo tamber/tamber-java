@@ -15,24 +15,24 @@ import org.json.simple.JSONValue;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-public class Actor{
-	private static final String object = "actor";
+public class Event{
+	private static final String object = "event";
 	private Engine engine;
 
-	public Actor(Engine e) {
+	public Event(Engine e) {
 		engine = e;
 	}
 
 	private List<NameValuePair> _getBody(HashMap<String,Object> params) throws TamberException{
 		List<NameValuePair> out = new ArrayList<NameValuePair>();
 		for (String key : params.keySet()) {
-			if (key == "behaviors" || key == "getRecs"){
+			if (key == "events" || key == "getRecs"){
 				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(params.get(key))));
-			} else if (key=="created"){
+			} else if (key=="created" || key=="created_before"|| key=="created_since" || key == "number"){
 				if(params.get(key).getClass().equals(Integer.class)){
 					out.add(new BasicNameValuePair(key, Integer.toString((Integer)params.get(key))));
 				} else {
-					throw new TamberException(String.format("Created field in Actor params must be an Integer. %s provided.", params.get(key).getClass()));
+					throw new TamberException(String.format("'Created' field in user params must be an Integer. %s provided.", params.get(key).getClass()));
 				}
 			} else if (key == "id"){
 				out.add(new BasicNameValuePair(key, (String)params.get(key)));
@@ -41,19 +41,13 @@ public class Actor{
 		return out;
 	}
 
-	public JSONObject create(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "create", _getBody(params));
-	}
-	public JSONObject addBehaviors(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "addBehaviors", _getBody(params));
-	}
-	public JSONObject removeBehaviors(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "removeBehaviors", _getBody(params));
+	public JSONObject track(HashMap<String,Object> params) throws TamberException{
+		return Comms.Post(engine, object, "track", _getBody(params));
 	}
 	public JSONObject retrieve(HashMap<String,Object> params) throws TamberException{
 		return Comms.Post(engine, object, "retrieve", _getBody(params));
 	}
-	public JSONObject remove(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "remove", _getBody(params));
+	public JSONObject batch(HashMap<String,Object> params) throws TamberException{
+		return Comms.Post(engine, object, "batch", _getBody(params));
 	}
 }
