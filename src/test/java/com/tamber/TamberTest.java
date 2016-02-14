@@ -7,7 +7,6 @@ import com.tamber.DiscoverTest;
 import com.tamber.UserTest;
 import com.tamber.ItemTest;
 import com.tamber.BehaviorTest;
-import com.tamber.PropertyTest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +49,6 @@ public class TamberTest
         initTamber();
         runEventTests();
         runUserTests();
-        runPropertyTests();
         runItemTests();
         runBehaviorTests();
         runDiscoverTests();        
@@ -71,12 +69,6 @@ public class TamberTest
         assertTrue( UserTest.create(tamber) );
         assertTrue( UserTest.update(tamber) );
         assertTrue( UserTest.retrieve(tamber) );
-    }
-
-    public void runPropertyTests(){
-        assertTrue( PropertyTest.create(tamber) );
-        assertTrue( PropertyTest.retrieve(tamber) );
-        assertTrue( PropertyTest.create(tamber) );
     }
 
     public void runItemTests(){

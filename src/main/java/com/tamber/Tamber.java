@@ -7,7 +7,6 @@ import com.tamber.object.Event;
 import com.tamber.object.Discover;
 import com.tamber.object.User;
 import com.tamber.object.Item;
-import com.tamber.object.Property;
 import com.tamber.object.Behavior;
 
 
@@ -46,7 +45,6 @@ public class Tamber{
 	public final Discover discover;
 	public final User user;
 	public final Item item;
-	public final Property property;
 	public final Behavior behavior;
 	
 
@@ -57,7 +55,6 @@ public class Tamber{
 		discover = new Discover(engine);
 		user = new User(engine);
 		item = new Item(engine);
-		property = new Property(engine);
 		behavior = new Behavior(engine);
 	}
 
