@@ -56,7 +56,7 @@ public class TamberTest
 
 
     public static void initTamber(){
-        tamber = new Tamber("H4y13AJ1QMlgzOqZ0sib");
+        tamber = new Tamber("Mu6DUPXdDYe98cv5JIfX", "SbWYPBNdARfIDa0IIO9L");
     }
 
     public void runEventTests(){

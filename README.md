@@ -18,7 +18,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.tamber</groupId>
   <artifactId>tamber-java</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
@@ -50,7 +50,8 @@ import org.json.JSONObject;
 public class TamberExample {
 
     public static void main(String[] args) {
-        Tamber tamber = new Tamber("key_H4y13AJ1QMlgzOqZ0sib");
+        
+        Tamber tamber = new Tamber("your_project_key", "your_engine_key");
 
         //Create Event
         HashMap<String,Object> eventParams = new HashMap<String,Object>();
@@ -58,8 +59,8 @@ public class TamberExample {
         eventParams.put("item", "item_wmt4fn6o4zlk");
         eventParams.put("behavior", "like");
 
-        //Set getRecs to return fresh suggestions for the user [Optional]
-        eventParams.put("getRecs", new HashMap<String,Object>());
+        //Set get_recs to return fresh suggestions for the user [Optional]
+        eventParams.put("get_recs", new HashMap<String,Object>());
 
         JSONObject resp = new JSONObject();
         try{

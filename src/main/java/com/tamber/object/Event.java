@@ -1,7 +1,7 @@
 package com.tamber.object;
 
 import com.tamber.net.Comms;
-import com.tamber.net.Engine;
+import com.tamber.net.Client;
 import com.tamber.exception.TamberException;
 
 import java.util.ArrayList;
@@ -17,16 +17,16 @@ import org.apache.http.message.BasicNameValuePair;
 
 public class Event{
 	private static final String object = "event";
-	private Engine engine;
+	private Client client;
 
-	public Event(Engine e) {
-		engine = e;
+	public Event(Client c) {
+		client = c;
 	}
 
 	private List<NameValuePair> _getBody(HashMap<String,Object> params) throws TamberException{
 		List<NameValuePair> out = new ArrayList<NameValuePair>();
 		for (String key : params.keySet()) {
-			if (key == "events" || key == "getRecs"){
+			if (key == "events" || key == "get_recs"){
 				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(params.get(key))));
 			} else if (key=="created" || key=="created_before"|| key=="created_since" || key == "number"){
 				if(params.get(key).getClass().equals(Integer.class)){
@@ -42,12 +42,12 @@ public class Event{
 	}
 
 	public JSONObject track(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "track", _getBody(params));
+		return Comms.Post(client, object, "track", _getBody(params));
 	}
 	public JSONObject retrieve(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "retrieve", _getBody(params));
+		return Comms.Post(client, object, "retrieve", _getBody(params));
 	}
 	public JSONObject batch(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "batch", _getBody(params));
+		return Comms.Post(client, object, "batch", _getBody(params));
 	}
 }

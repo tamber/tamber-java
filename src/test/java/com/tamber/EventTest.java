@@ -19,7 +19,7 @@ public class EventTest{
         eventParams.put("user", "user_rlox8k927z7p");
         eventParams.put("item", "item_wmt4fn6o4zlk");
         eventParams.put("behavior", "like");
-        eventParams.put("getRecs", new HashMap<String,Object>());
+        eventParams.put("get_recs", new HashMap<String,Object>());
 
         JSONObject resp = new JSONObject();
         try{

@@ -4,8 +4,9 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.client.config.RequestConfig;
 
-public class Engine{
-	public String apiKey;
+public class Client{
+	public String projectKey;
+	public String engineKey;
 	public String apiVersion;
 	public String clientVersion;
 	public String apiUrl;
@@ -14,9 +15,10 @@ public class Engine{
 	public int httpSocketTimeoutMS = 30000;
     public int httpConnectTimeoutMS = 80000;
 
-	public Engine(String url, String key, String apiv, String clientv, HttpClient client, int socketTimeout, int connectTimeout){
+	public Client(String url, String pkey, String ekey, String apiv, String clientv, HttpClient client, int socketTimeout, int connectTimeout){
 		apiUrl = url;
-		apiKey = key;
+		projectKey = pkey;
+		engineKey = ekey;
 		apiVersion = apiv;
 		clientVersion = clientv;
 		httpClient = client;

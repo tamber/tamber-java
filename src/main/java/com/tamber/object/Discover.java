@@ -1,7 +1,7 @@
 package com.tamber.object;
 
 import com.tamber.net.Comms;
-import com.tamber.net.Engine;
+import com.tamber.net.Client;
 import com.tamber.exception.TamberException;
 
 import java.util.ArrayList;
@@ -18,12 +18,12 @@ import org.apache.http.message.BasicNameValuePair;
 public class Discover{
 
 	private static final String object = "discover";
-	private Engine engine;
+	private Client client;
 
-	public Discover(Engine e) {
-		engine = e;
+	public Discover(Client c) {
+		client = c;
 	}
-
+	
 	private List<NameValuePair> _getBody(HashMap<String,Object> params) throws TamberException{
 		List<NameValuePair> out = new ArrayList<NameValuePair>();
 		for (String key : params.keySet()) {
@@ -43,19 +43,19 @@ public class Discover{
 	}
 
 	public JSONObject recommended(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "recommended", _getBody(params));
+		return Comms.Post(client, object, "recommended", _getBody(params));
 	}
 	public JSONObject similar(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "similar", _getBody(params));
+		return Comms.Post(client, object, "similar", _getBody(params));
 	}
 	public JSONObject recommendedSimilar(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "recommendedSimilar", _getBody(params));
+		return Comms.Post(client, object, "recommended_similar", _getBody(params));
 	}
 	public JSONObject popular(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "popular", _getBody(params));
+		return Comms.Post(client, object, "popular", _getBody(params));
 	}
 	public JSONObject hot(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "hot", _getBody(params));
+		return Comms.Post(client, object, "hot", _getBody(params));
 	}
 
 }

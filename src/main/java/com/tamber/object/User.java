@@ -1,7 +1,7 @@
 package com.tamber.object;
 
 import com.tamber.net.Comms;
-import com.tamber.net.Engine;
+import com.tamber.net.Client;
 import com.tamber.exception.TamberException;
 
 import java.util.ArrayList;
@@ -16,17 +16,18 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 public class User{
+	
 	private static final String object = "user";
-	private Engine engine;
+	private Client client;
 
-	public User(Engine e) {
-		engine = e;
+	public User(Client c) {
+		client = c;
 	}
 
 	private List<NameValuePair> _getBody(HashMap<String,Object> params) throws TamberException{
 		List<NameValuePair> out = new ArrayList<NameValuePair>();
 		for (String key : params.keySet()) {
-			if (key == "metadata" || key == "events" || key == "getRecs"){
+			if (key == "metadata" || key == "events" || key == "get_recs"){
 				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(params.get(key))));
 			} else if (key=="created"){
 				if(params.get(key).getClass().equals(Integer.class)){
@@ -42,12 +43,12 @@ public class User{
 	}
 
 	public JSONObject create(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "create", _getBody(params));
+		return Comms.Post(client, object, "create", _getBody(params));
 	}
 	public JSONObject update(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "update", _getBody(params));
+		return Comms.Post(client, object, "update", _getBody(params));
 	}
 	public JSONObject retrieve(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(engine, object, "retrieve", _getBody(params));
+		return Comms.Post(client, object, "retrieve", _getBody(params));
 	}
 }

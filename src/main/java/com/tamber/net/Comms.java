@@ -54,15 +54,15 @@ public class Comms{
         GET, POST, PUT, DELETE
     }
 
-	public static JSONObject Get(Engine engine, String object, String method, List<NameValuePair> params) throws TamberException {
-        return _request(engine, Method.GET, object +"/"+method, params);
+	public static JSONObject Get(Client client, String object, String method, List<NameValuePair> params) throws TamberException {
+        return _request(client, Method.GET, object +"/"+method, params);
     }
 
-    public static JSONObject Post(Engine engine, String object, String method, List<NameValuePair> params) throws TamberException {
-        return _request(engine, Method.POST, object +"/"+method, params);
+    public static JSONObject Post(Client client, String object, String method, List<NameValuePair> params) throws TamberException {
+        return _request(client, Method.POST, object +"/"+method, params);
     }
 
-    private static JSONObject _request(Engine engine, Method method, String url, List<NameValuePair> params) throws TamberException {
+    private static JSONObject _request(Client client, Method method, String url, List<NameValuePair> params) throws TamberException {
         HttpRequestBase req;
         switch (method) {
             case GET:
@@ -74,10 +74,10 @@ public class Comms{
             default:
                 throw new IllegalArgumentException("Method " + method + " is not supported");
         }
-        req.setHeader("Tamber-Version", engine.apiVersion);
-		req.setHeader("User-Agent", "Tamber/v1 JavaBindings/"+engine.clientVersion);
+        req.setHeader("Tamber-Version", client.apiVersion);
+		req.setHeader("User-Agent", "Tamber/v1 JavaBindings/"+client.clientVersion);
 		req.setHeader("Content-Type", "application/x-www-form-urlencoded");
-        String auth = new String(Base64.encodeBase64((engine.apiKey+":").getBytes()));  
+        String auth = new String(Base64.encodeBase64((client.projectKey+":"+client.engineKey).getBytes()));  
 		req.addHeader("Authorization", "Basic " +auth);
 
 
@@ -96,17 +96,17 @@ public class Comms{
         }
 
         try {
-            req.setURI(new URI(engine.apiUrl + "/" + url));
+            req.setURI(new URI(client.apiUrl + "/" + url));
         } catch (URISyntaxException e) {
             throw new IllegalStateException(e);
         }
 
-        req.setConfig(engine.reqConfig);
+        req.setConfig(client.reqConfig);
 
         HttpResponse response;
 
         try {
-            response = engine.httpClient.execute(req);
+            response = client.httpClient.execute(req);
         } catch (IOException e) {
             throw new TamberException(String.format("%s=%s - cause: %s", e.getClass().getName(), e.getMessage(), e.getCause().toString()));
         }
