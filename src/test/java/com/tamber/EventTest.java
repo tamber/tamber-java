@@ -16,16 +16,16 @@ public class EventTest{
     public static boolean track(Tamber tamber){
         //Create Event
         HashMap<String,Object> eventParams = new HashMap<String,Object>();
-        eventParams.put("user", "user_rlox8k927z7p");
-        eventParams.put("item", "item_wmt4fn6o4zlk");
-        eventParams.put("behavior", "like");
+        eventParams.put("user", "user_jctzgisbru");
+        eventParams.put("item", "item_i5gq90scc1");
+        eventParams.put("behavior", "mention");
         eventParams.put("get_recs", new HashMap<String,Object>());
 
         JSONObject resp = new JSONObject();
         try{
             resp = tamber.event.track(eventParams);
         } catch(TamberException e) {
-            System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
+            System.out.println(String.format("TamberException: %s=%s", e.getClass().getName(), e.getMessage()));
             return false;
         }
         if(resp!= null){
@@ -74,23 +74,23 @@ public class EventTest{
 
         List<HashMap<String,Object>> events = new ArrayList<HashMap<String,Object>>();
         HashMap<String,Object> e1 = new HashMap<String,Object>();
-        e1.put("user", "user_rlox8k927z7p");
-        e1.put("behavior", "like");
-        e1.put("item", "item_83jx4c57r2ru");
+        e1.put("user", "user_jctzgisbru");
+        e1.put("behavior", "mention");
+        e1.put("item", "item_u9nlytt3w5");
         e1.put("value", 1.0);
         e1.put("created", 1454465800);
         events.add(e1);
         HashMap<String,Object> e2 = new HashMap<String,Object>();
-        e2.put("user", "user_ujkksokcwr1k");
-        e2.put("behavior", "like");
-        e2.put("item", "item_wmt4fn6o4zlk");
+        e2.put("user", "user_y7u9sv6we0");
+        e2.put("behavior", "mention");
+        e2.put("item", "item_u9nlytt3w5");
         e2.put("value", 1.0);
         e2.put("created", 1454465400);
         events.add(e2);
         HashMap<String,Object> e3 = new HashMap<String,Object>();
-        e3.put("user", "user_rlox8k927z7p");
-        e3.put("behavior", "like");
-        e3.put("item", "item_83jx4c57r2ru");
+        e3.put("user", "user_jctzgisbru");
+        e3.put("behavior", "mention");
+        e3.put("item", "item_d1zevdf6hl");
         e3.put("value", 1.0);
         e3.put("created", 1408652800);
         events.add(e3);

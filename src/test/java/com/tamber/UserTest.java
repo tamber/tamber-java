@@ -16,7 +16,7 @@ public class UserTest{
     public static boolean create(Tamber tamber){
         //Set id
         HashMap<String,Object> userParams = new HashMap<String,Object>();
-        userParams.put("id", "user_rlox8k927z7p");
+        userParams.put("id", "user_fwu592pwmo");
         //Set metadata
         HashMap<String,Object> metadata = new HashMap<String,Object>();
         metadata.put("city", "San Francisco, CA");
@@ -25,8 +25,8 @@ public class UserTest{
         //Set events
         List<HashMap<String,Object>> events = new ArrayList<HashMap<String,Object>>();
         HashMap<String,Object> event = new HashMap<String,Object>();
-        event.put("behavior", "like");
-        event.put("item", "item_wmt4fn6o4zlk");
+        event.put("behavior", "mention");
+        event.put("item", "item_u9nlytt3w5");
         event.put("value", 1.0);
         event.put("created", 1446417346);
         events.add(event);
@@ -55,7 +55,7 @@ public class UserTest{
     
     public static boolean update(Tamber tamber){
         HashMap<String,Object> userParams = new HashMap<String,Object>();
-        userParams.put("id", "user_rlox8k927z7p");
+        userParams.put("id", "user_fwu592pwmo");
         //Set metadata
         HashMap<String,Object> metadata = new HashMap<String,Object>();
         metadata.put("city", "Mountain View, CA");
@@ -86,7 +86,7 @@ public class UserTest{
 
     public static boolean retrieve(Tamber tamber){
         HashMap<String,Object> userParams = new HashMap<String,Object>();
-        userParams.put("id", "user_rlox8k927z7p");
+        userParams.put("id", "user_fwu592pwmo");
 
         JSONObject resp = new JSONObject();
         try{

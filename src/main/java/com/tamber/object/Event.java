@@ -26,6 +26,7 @@ public class Event{
 	private List<NameValuePair> _getBody(HashMap<String,Object> params) throws TamberException{
 		List<NameValuePair> out = new ArrayList<NameValuePair>();
 		for (String key : params.keySet()) {
+			 System.out.println(String.format("_getBody params key: %s", key));
 			if (key == "events" || key == "get_recs"){
 				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(params.get(key))));
 			} else if (key=="created" || key=="created_before"|| key=="created_since" || key == "number"){
@@ -34,8 +35,12 @@ public class Event{
 				} else {
 					throw new TamberException(String.format("'Created' field in user params must be an Integer. %s provided.", params.get(key).getClass()));
 				}
-			} else if (key == "id"){
-				out.add(new BasicNameValuePair(key, (String)params.get(key)));
+			} else if (key == "user" || key == "item" || key == "behavior"){
+				if(params.get(key).getClass().equals(String.class)){
+					out.add(new BasicNameValuePair(key, (String)params.get(key)));
+				} else {
+					throw new TamberException(String.format("%s field in Evebt params must be a String. %s provided.", key, params.get(key).getClass()));
+				}
 			}
 		}
 		return out;

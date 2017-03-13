@@ -63,6 +63,7 @@ public class Comms{
     }
 
     private static JSONObject _request(Client client, Method method, String url, List<NameValuePair> params) throws TamberException {
+         System.out.println(String.format("_request params: %s",URLEncodedUtils.format(params, "UTF-8")));
         HttpRequestBase req;
         switch (method) {
             case GET:
@@ -126,6 +127,10 @@ public class Comms{
                 }
             } catch (IOException e) {
                 new TamberException("Response read error: " + e.getCause()); 
+            }
+            JSONObject jsonResp = new JSONObject(jsonRaw.toString());
+            if (!jsonResp.getBoolean("success")){
+                 throw new TamberException("Tamber API error:" + jsonResp.getString("error"));
             }
             return new JSONObject(jsonRaw.toString());
         } catch (JSONException e) {

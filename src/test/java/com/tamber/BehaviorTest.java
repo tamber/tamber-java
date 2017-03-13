@@ -15,14 +15,8 @@ public class BehaviorTest{
 
     public static boolean create(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("name", "share");
-        params.put("desirability",0.3);
-        params.put("type", "exponential");
-        
-        HashMap<String,Object> typeParams = new HashMap<String,Object>();
-        typeParams.put("lambda", 2.0);
-
-        params.put("params", typeParams);
+        params.put("name", "mention");
+        params.put("desirability",0.6);
 
         JSONObject resp = new JSONObject();
         try{
@@ -46,7 +40,7 @@ public class BehaviorTest{
     }
     public static boolean retrieve(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("name", "share");
+        params.put("name", "mention");
 
         JSONObject resp = new JSONObject();
         try{

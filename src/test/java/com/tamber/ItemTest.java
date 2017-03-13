@@ -14,18 +14,18 @@ public class ItemTest{
 
     public static boolean create(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("id", "item_znt5crzzfibh");
+        params.put("id", "item_faa666arma");
 
         HashMap<String,Object> properties = new HashMap<String,Object>();
-        properties.put("clothing_type","shirt");
-        properties.put("available_small",true);
+        properties.put("clothing_type","pants");
+        properties.put("stock", 90);
         properties.put("available_medium",true);
         properties.put("available_large",true);
         params.put("properties", properties);
 
         List<String> tags = new ArrayList<String>();
         tags.add("casual");
-        tags.add("preppy");
+        tags.add("feminine");
         params.put("tags", tags);
 
         JSONObject resp = new JSONObject();
@@ -51,7 +51,7 @@ public class ItemTest{
 
     public static boolean update(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("id", "item_znt5crzzfibh");
+        params.put("id", "item_faa666arma");
 
         HashMap<String,Object> updates = new HashMap<String,Object>();
 
@@ -93,7 +93,7 @@ public class ItemTest{
 
     public static boolean retrieve(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("id", "item_znt5crzzfibh");
+        params.put("id", "item_faa666arma");
 
         JSONObject resp = new JSONObject();
         try{
@@ -118,7 +118,7 @@ public class ItemTest{
 
     public static boolean remove(Tamber tamber){
         HashMap<String,Object> params = new HashMap<String,Object>();
-        params.put("id", "item_znt5crzzfibh");
+        params.put("id", "item_faa666arma");
 
         JSONObject resp = new JSONObject();
         try{
