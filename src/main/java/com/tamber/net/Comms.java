@@ -63,7 +63,6 @@ public class Comms{
     }
 
     private static JSONObject _request(Client client, Method method, String url, List<NameValuePair> params) throws TamberException {
-         System.out.println(String.format("_request params: %s",URLEncodedUtils.format(params, "UTF-8")));
         HttpRequestBase req;
         switch (method) {
             case GET:
@@ -87,7 +86,6 @@ public class Comms{
         if (method == Method.GET){
             url = url + "?";
             String body = URLEncodedUtils.format(params, "UTF-8");
-            System.out.println(String.format("url: %s   body: %s", url, body));
             url += body;
         } else {
             try{

@@ -26,7 +26,6 @@ public class Event{
 	private List<NameValuePair> _getBody(HashMap<String,Object> params) throws TamberException{
 		List<NameValuePair> out = new ArrayList<NameValuePair>();
 		for (String key : params.keySet()) {
-			 System.out.println(String.format("_getBody params key: %s", key));
 			if (key == "events" || key == "get_recs"){
 				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(params.get(key))));
 			} else if (key=="created" || key=="created_before"|| key=="created_since" || key == "number"){
