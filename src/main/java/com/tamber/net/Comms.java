@@ -74,7 +74,9 @@ public class Comms{
             default:
                 throw new IllegalArgumentException("Method " + method + " is not supported");
         }
-        req.setHeader("Tamber-Version", client.apiVersion);
+        if(client.apiVersion.length() > 0){
+            req.setHeader("Tamber-Version", client.apiVersion);
+        }
 		req.setHeader("User-Agent", "Tamber/v1 JavaBindings/"+client.clientVersion);
 		req.setHeader("Content-Type", "application/x-www-form-urlencoded");
         String auth = new String(Base64.encodeBase64((client.projectKey+":"+client.engineKey).getBytes()));  

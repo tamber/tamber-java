@@ -37,6 +37,12 @@ public class Discover{
 				}
 			} else if (key=="filter" || key =="test_events"){
 				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(params.get(key))));
+			} else if (key=="get_properties"){
+				if(params.get(key).getClass().equals(Boolean.class)){
+					out.add(new BasicNameValuePair(key, Boolean.toString((Boolean)params.get(key))));
+				} else {
+					throw new TamberException(String.format("%s field in Discover params must be a Boolean. %s provided.", key, params.get(key).getClass()));
+				}
 			}
 		}
 		return out;

@@ -1,1 +1,3 @@
 target/
+maven-central-deploy.*
+pom.xml.*

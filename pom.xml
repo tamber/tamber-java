@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.tamber</groupId>
   <artifactId>tamber</artifactId>
@@ -13,6 +12,26 @@
       <url>http://choosealicense.com/licenses/mit/</url>
     </license>
   </licenses>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>9</version>
+  </parent>
+  <scm>
+    <url>https://github.com/tamber/tamber-java</url>
+    <connection>scm:git:git@github.com:tamber/tamber-java.git</connection>
+    <developerConnection>scm:git:git@github.com:tamber/tamber-java.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>tamber</id>
+      <name>tamber-java</name>
+      <url>https://github.com/tamber/tamber-java</url>
+      <layout>default</layout>
+    </repository>
+  </distributionManagement>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -67,24 +86,20 @@
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
-        <configuration>
-            <executable>java</executable>
-            <arguments>
-                <argument>-server</argument>
-                <argument>-Dfile.encoding=utf-8</argument>
-                <argument>-XX:+UseNUMA</argument>
-                <argument>-Xms1g</argument>
-                <argument>-Xmx1g</argument>
-                <argument>-classpath</argument>
-                <argument>target/lib/*;target/tamber-1.0.0.jar</argument>
-                <argument>com.tamber</argument>
-            </arguments>
-        </configuration>
-      </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.6</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.4.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>

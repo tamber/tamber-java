@@ -34,8 +34,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 public class Tamber{
 	public static final String API_URL = "https://api.tamber.com/v1";
-	public static String API_VERSION = "2017-2-8";
-	public static String CLIENT_VERSION = "0.1.1";
+	public static String CLIENT_VERSION = "0.1.2";
 	private int httpSocketTimeoutMS = 30000;
     private int httpConnectTimeoutMS = 80000;
 
@@ -50,12 +49,16 @@ public class Tamber{
 
 	public Tamber(String projectKey, String engineKey) {
 		HttpClient httpClient = HttpClientBuilder.create().disableAutomaticRetries().useSystemProperties().build();
-		client = new Client(API_URL, projectKey, engineKey, API_VERSION, CLIENT_VERSION, httpClient, httpSocketTimeoutMS, httpConnectTimeoutMS);
+		client = new Client(API_URL, projectKey, engineKey, "", CLIENT_VERSION, httpClient, httpSocketTimeoutMS, httpConnectTimeoutMS);
 		event = new Event(client);
 		discover = new Discover(client);
 		user = new User(client);
 		item = new Item(client);
 		behavior = new Behavior(client);
+	}
+
+	public void setApiVersion(String apiVersion) {
+		this.client.setApiVersion(apiVersion);
 	}
 
 	public void setTimeout(int connectTimeout, int readTimeout) {

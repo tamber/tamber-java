@@ -30,4 +30,8 @@ public class Client{
                 .setConnectionRequestTimeout(httpConnectTimeoutMS)
                 .build();
 	}
+
+	public void setApiVersion(String apiVersion) {
+		this.apiVersion = apiVersion;
+	}
 }
