@@ -17,7 +17,7 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
   <groupId>com.tamber</groupId>
-  <artifactId>tamber-java</artifactId>
+  <artifactId>tamber</artifactId>
   <version>0.1.2</version>
 </dependency>
 ```
