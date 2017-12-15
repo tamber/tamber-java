@@ -84,7 +84,4 @@ public class TamberTest extends TestCase {
         assertTrue(DiscoverTest.popular(tamber));
         assertTrue(DiscoverTest.hot(tamber));
     }
-
-
-
 }

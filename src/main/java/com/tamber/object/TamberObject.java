@@ -22,7 +22,11 @@ public class TamberObject {
 		for (Map.Entry<String, Object> entry : params.entrySet()) {
 			String key = entry.getKey();
 			Object value = entry.getValue();
-			out.add(new BasicNameValuePair(key, JSONValue.toJSONString(value)));
+			if (value instanceof String) {
+				out.add(new BasicNameValuePair(key, (String) value));
+			} else {
+				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(value)));
+			}
 		}
 		return out;
 	}

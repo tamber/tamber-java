@@ -26,7 +26,7 @@ public class EventTest{
             System.out.println(String.format("TamberException: %s=%s", e.getClass().getName(), e.getMessage()));
             return false;
         }
-        if (resp!= null) {
+        if (resp != null) {
             try {
                 System.out.println(resp.toString(4));
                 return true;
@@ -53,7 +53,7 @@ public class EventTest{
             System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
             return false;
         }
-        if (resp!= null) {
+        if (resp != null) {
             try {
                 System.out.println(resp.toString(4));
                 return true;
@@ -102,7 +102,7 @@ public class EventTest{
             System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
             return false;
         }
-        if (resp!= null) {
+        if (resp != null) {
             try {
                 System.out.println(resp.toString(4));
                 return true;

@@ -2,3 +2,10 @@ target/
 maven-central-deploy.*
 pom.xml.*
 release.properties
+
+# Gradle files
+.gradle/
+build/
+.gradletasknamecache
+gradlew*
+gradle/
