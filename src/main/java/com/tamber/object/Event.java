@@ -15,7 +15,7 @@ import org.json.simple.JSONValue;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-public class Event{
+public class Event extends TamberObject {
 	private static final String object = "event";
 	private Client client;
 
@@ -23,35 +23,13 @@ public class Event{
 		client = c;
 	}
 
-	private List<NameValuePair> _getBody(HashMap<String,Object> params) throws TamberException{
-		List<NameValuePair> out = new ArrayList<NameValuePair>();
-		for (String key : params.keySet()) {
-			if (key == "events" || key == "get_recs"){
-				out.add(new BasicNameValuePair(key, JSONValue.toJSONString(params.get(key))));
-			} else if (key=="created" || key=="created_before"|| key=="created_since" || key == "number"){
-				if(params.get(key).getClass().equals(Integer.class)){
-					out.add(new BasicNameValuePair(key, Integer.toString((Integer)params.get(key))));
-				} else {
-					throw new TamberException(String.format("'Created' field in user params must be an Integer. %s provided.", params.get(key).getClass()));
-				}
-			} else if (key == "user" || key == "item" || key == "behavior"){
-				if(params.get(key).getClass().equals(String.class)){
-					out.add(new BasicNameValuePair(key, (String)params.get(key)));
-				} else {
-					throw new TamberException(String.format("%s field in Evebt params must be a String. %s provided.", key, params.get(key).getClass()));
-				}
-			}
-		}
-		return out;
+	public JSONObject track(HashMap<String,Object> params) throws TamberException {
+		return Comms.Post(client, object, "track", this._getBody(params));
 	}
-
-	public JSONObject track(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(client, object, "track", _getBody(params));
+	public JSONObject retrieve(HashMap<String,Object> params) throws TamberException {
+		return Comms.Post(client, object, "retrieve", this._getBody(params));
 	}
-	public JSONObject retrieve(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(client, object, "retrieve", _getBody(params));
-	}
-	public JSONObject batch(HashMap<String,Object> params) throws TamberException{
-		return Comms.Post(client, object, "batch", _getBody(params));
+	public JSONObject batch(HashMap<String,Object> params) throws TamberException {
+		return Comms.Post(client, object, "batch", this._getBody(params));
 	}
 }

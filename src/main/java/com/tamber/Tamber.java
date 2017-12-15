@@ -32,7 +32,7 @@ import java.util.zip.GZIPInputStream;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-public class Tamber{
+public class Tamber {
 	public static final String API_URL = "https://api.tamber.com/v1";
 	public static String CLIENT_VERSION = "0.1.2";
 	private int httpSocketTimeoutMS = 30000;
@@ -64,7 +64,7 @@ public class Tamber{
 	public void setTimeout(int connectTimeout, int readTimeout) {
 		this.httpSocketTimeoutMS = readTimeout;
 		this.httpConnectTimeoutMS = connectTimeout;
-		if(client != null){
+		if (client != null) {
 			this.client.httpSocketTimeoutMS = readTimeout;
         	this.client.httpConnectTimeoutMS = connectTimeout;
 		}

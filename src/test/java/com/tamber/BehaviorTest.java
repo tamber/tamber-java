@@ -11,25 +11,24 @@ import org.json.JSONObject;
 import org.json.JSONException;
 
 
-public class BehaviorTest{
-
-    public static boolean create(Tamber tamber){
+public class BehaviorTest {
+    public static boolean create(Tamber tamber) {
         HashMap<String,Object> params = new HashMap<String,Object>();
         params.put("name", "mention");
         params.put("desirability",0.6);
 
         JSONObject resp = new JSONObject();
-        try{
+        try {
             resp = tamber.behavior.create(params);
-        } catch(TamberException e) {
+        } catch (TamberException e) {
             System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
             return false;
         }
-        if(resp!= null){
+        if (resp!= null) {
             try {
                 System.out.println(resp.toString(4));
                 return true;
-            } catch (JSONException e){
+            } catch (JSONException e) {
                 System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
                 return false;
             }
@@ -38,22 +37,23 @@ public class BehaviorTest{
             return false;
         }
     }
-    public static boolean retrieve(Tamber tamber){
+
+    public static boolean retrieve(Tamber tamber) {
         HashMap<String,Object> params = new HashMap<String,Object>();
         params.put("name", "mention");
 
         JSONObject resp = new JSONObject();
-        try{
+        try {
             resp = tamber.behavior.retrieve(params);
-        } catch(TamberException e) {
+        } catch (TamberException e) {
             System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
             return false;
         }
-        if(resp!= null){
+        if (resp!= null) {
             try {
                 System.out.println(resp.toString(4));
                 return true;
-            } catch (JSONException e){
+            } catch (JSONException e) {
                 System.out.println(String.format("%s=%s", e.getClass().getName(), e.getMessage()));
                 return false;
             }

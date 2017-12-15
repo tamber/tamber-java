@@ -48,8 +48,7 @@ import org.json.JSONObject;
 import org.json.JSONString;
 import org.json.simple.JSONValue;
 
-public class Comms{
-
+public class Comms {
     private enum Method {
         GET, POST, PUT, DELETE
     }
@@ -74,7 +73,7 @@ public class Comms{
             default:
                 throw new IllegalArgumentException("Method " + method + " is not supported");
         }
-        if(client.apiVersion.length() > 0){
+        if (client.apiVersion.length() > 0) {
             req.setHeader("Tamber-Version", client.apiVersion);
         }
 		req.setHeader("User-Agent", "Tamber/v1 JavaBindings/"+client.clientVersion);
@@ -83,14 +82,14 @@ public class Comms{
 		req.addHeader("Authorization", "Basic " +auth);
 
 
-        if (method == Method.GET){
+        if (method == Method.GET) {
             url = url + "?";
             String body = URLEncodedUtils.format(params, "UTF-8");
             url += body;
         } else {
-            try{
+            try {
                 ((HttpPost)req).setEntity(new UrlEncodedFormEntity(params));
-            } catch(UnsupportedEncodingException e){
+            } catch(UnsupportedEncodingException e) {
                 throw new IllegalStateException(e);
             }
             
@@ -112,7 +111,7 @@ public class Comms{
             throw new TamberException(String.format("%s=%s - cause: %s", e.getClass().getName(), e.getMessage(), e.getCause().toString()));
         }
         try {
-            if (response.getEntity().getContentLength() == 0){
+            if (response.getEntity().getContentLength() == 0) {
                 throw new TamberException("Empty server response received.");
             }
             StringBuilder jsonRaw = new StringBuilder();
@@ -127,7 +126,7 @@ public class Comms{
                 new TamberException("Response read error: " + e.getCause()); 
             }
             JSONObject jsonResp = new JSONObject(jsonRaw.toString());
-            if (!jsonResp.getBoolean("success")){
+            if (!jsonResp.getBoolean("success")) {
                  throw new TamberException("Tamber API error:" + jsonResp.getString("error"));
             }
             return new JSONObject(jsonRaw.toString());
