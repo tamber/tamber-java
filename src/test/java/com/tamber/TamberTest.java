@@ -69,7 +69,9 @@ public class TamberTest extends TestCase {
         assertTrue(ItemTest.create(tamber));
         assertTrue(ItemTest.update(tamber));
         assertTrue(ItemTest.retrieve(tamber));
-        assertTrue(ItemTest.remove(tamber));
+        assertTrue(ItemTest.hide(tamber));
+        assertTrue(ItemTest.unhide(tamber));
+        assertTrue(ItemTest.delete(tamber));
     }
 
     public void runBehaviorTests() {

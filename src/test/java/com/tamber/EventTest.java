@@ -1,11 +1,13 @@
 package com.tamber;
 
-import com.tamber.Tamber;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
+import com.tamber.Tamber;
+import com.tamber.types.TamberEvent;
+import com.tamber.types.TamberGetRecs;
 import com.tamber.exception.TamberException;
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -13,15 +15,16 @@ import org.json.JSONException;
 public class EventTest{
     public static boolean track(Tamber tamber) {
         //Create Event
-        HashMap<String,Object> eventParams = new HashMap<String,Object>();
-        eventParams.put("user", "user_jctzgisbru");
-        eventParams.put("item", "item_i5gq90scc1");
-        eventParams.put("behavior", "mention");
-        eventParams.put("get_recs", new HashMap<String,Object>());
+        TamberEvent event = new TamberEvent();
+        event.user = "user_jctzgisbru";
+        event.item = "item_i5gq90scc1";
+        event.behavior = "mention";
+
+        TamberGetRecs get_recs = new TamberGetRecs();
 
         JSONObject resp = new JSONObject();
         try {
-            resp = tamber.event.track(eventParams);
+            resp = tamber.event.track(event, get_recs);
         } catch (TamberException e) {
             System.out.println(String.format("TamberException: %s=%s", e.getClass().getName(), e.getMessage()));
             return false;

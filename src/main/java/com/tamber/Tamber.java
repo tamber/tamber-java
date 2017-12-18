@@ -34,7 +34,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 public class Tamber {
 	public static final String API_URL = "https://api.tamber.com/v1";
-	public static String CLIENT_VERSION = "0.1.2";
+	public static String CLIENT_VERSION = "0.1.4";
 	private int httpSocketTimeoutMS = 30000;
     private int httpConnectTimeoutMS = 80000;
 

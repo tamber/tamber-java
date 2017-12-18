@@ -4,16 +4,12 @@ import com.tamber.net.Comms;
 import com.tamber.net.Client;
 import com.tamber.exception.TamberException;
 
+import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.List;
+
 import org.json.JSONObject;
-import org.json.JSONString;
-import org.json.simple.JSONValue;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 
 public class Behavior extends TamberObject {
 	private static final String object = "behavior";
@@ -23,11 +19,15 @@ public class Behavior extends TamberObject {
 		client = c;
 	}
 
-	public JSONObject create(HashMap<String,Object> params) throws TamberException {
+	public JSONObject create(Map<String, Object> params) throws TamberException {
 		return Comms.Post(client, object, "create", _getBody(params));
 	}
-	public JSONObject retrieve(HashMap<String,Object> params) throws TamberException {
+	public JSONObject retrieve(Map<String, Object> params) throws TamberException {
 		return Comms.Post(client, object, "retrieve", _getBody(params));
 	}
-
+	public JSONObject retrieve(String name) throws TamberException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("name", name);
+		return retrieve(params);
+	}
 }
