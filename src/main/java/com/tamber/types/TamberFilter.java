@@ -34,7 +34,7 @@ public class TamberFilter {
 	}
 
 	public Object toMap() {
-		if (value == null) {
+		if (value != null) {
 			return value;
 		}
 		Map<String, Object> out = new HashMap<String, Object>();

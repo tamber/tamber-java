@@ -9,3 +9,4 @@ build/
 .gradletasknamecache
 gradlew*
 gradle/
+gradle.properties
